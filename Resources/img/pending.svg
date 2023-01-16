@@ -1,0 +1,20 @@
+<svg width="38" height="38" xmlns="http://www.w3.org/2000/svg">
+ <style type="text/css">.st0{fill:none;stroke:#FFCA38;stroke-width:2.5263;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:#FFCA38;}</style>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="40" width="40" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <g id="svg_2">
+    <circle id="svg_3" r="16" cy="18.19" cx="19" class="st0"/>
+   </g>
+   <g id="svg_4">
+    <path id="svg_5" d="m21.27,18.92l2.63,3.6l-1.98,1.4l-2.59,-3.74l-2.56,3.74l-2.09,-1.4l2.59,-3.6l-4.25,-1.44l0.86,-2.23l4.18,1.51l0,-4.39l2.41,0l0,4.36l4.21,-1.48l0.83,2.23l-4.24,1.44z" class="st1"/>
+   </g>
+  </g>
+ </g>
+</svg>
