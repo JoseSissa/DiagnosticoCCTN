@@ -159,14 +159,14 @@ h2 {
   height: 48px !important;
   font-size: 1.2rem;
   display: inline-block;
-  color: white !important;
+  color: #3C3C3B !important;
   font-weight: bold;
   padding: 6px 30px 6px 30px;
   cursor: pointer;
   text-transform: none !important;
   text-align: center;
-  transform: translate(15%, 0);
-  border: none;
+  border-radius: 25px;
+  border: 1px solid #3C3C3B;
   /*border-radius: 15px !important;
   box-shadow: 0 !important;
   margin: 0 10px 40px 10px;
@@ -315,6 +315,8 @@ button.active {
 @media only screen and (min-width: 768px) {
   .deudor-control {
     min-width: unset !important;
+    display: grid;
+		align-content: end;
   }
 }
 
@@ -591,7 +593,7 @@ input[type=file] {
   display: inline-block;
   color: white !important;
   font-weight: bold;
-  padding: 12px 30px 12px 30px;
+  padding: 12px 8px 12px 8px;
   cursor: pointer;
   text-transform: none !important;
   text-align: center;
@@ -664,10 +666,18 @@ input[type=number]::-webkit-outer-spin-button {
 
 .boton-adjuntar-estados-financieros {
   white-space: nowrap;
-  width: 170px;
+  width: 250px;
   height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.boton-adjuntar-estados-financieros img {
+  display: inline-block;
+}
+.boton-adjuntar-estados-financieros p {
+  margin: 0 8px 0 0;
+}
 .contenedor-pagina {
   position: relative;
   box-sizing: content-box !important;

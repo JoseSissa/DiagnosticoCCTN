@@ -102,7 +102,6 @@ class MainView
 
             <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h2 class="solo-movil">Comencemos a impulsar <b>tus sueños</b></h2>
-                <p class="lead">Con la información que nos brindes podremos darte la respuesta para la aprobación de tu crédito. Tus datos estarán seguros.</p>
             </div>
 
             <div class="container">
@@ -121,9 +120,6 @@ class MainView
                             </div>
                             <div class="row justify-content-center">
                                 <input type="hidden" id="tipo_persona" name="tipo_persona" value="<?php if (isset($_SESSION['tipo_persona'])) { echo $_SESSION['tipo_persona']; } ?>" />
-                                <div>
-                                    <button id="btnPersonaNatural" name="btnPersonaNatural" class="boton-formulario" type="button" onclick="validarBotonPersona(this)" >Persona natural</button>
-                                </div>
                                 <div>
                                     <button id="btnPersonaJuridica" name="btnPersonaJuridica" class="boton-formulario" type="button" onclick="validarBotonPersona(this)">Persona jurídica</button>
                                 </div>
@@ -151,18 +147,8 @@ class MainView
                                     </select>
                                 </div>
                                 <div class="deudor-control deudor-control__destino-credito">
-                                    <label for="destino_credito">¿Qué uso que le darás al dinero?</label>
+                                    <label for="destino_credito">Destino del crédito (Por favor describir el rubro del plan de inversión)</label>
                                     <input type="text" class="form-control" id="destino_credito" name="destino_credito" onchange="validarDivPersona()" placeholder="Escribe..." value="<?php if (isset($_SESSION['destino_credito'])) { echo $_SESSION['destino_credito']; } ?>" required >
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="deudor-control deudor-control__referido">
-                                    <label for="referido">Referido por (opcional)</label>
-                                    <input type="text" class="form-control" id="referido" name="referido" onchange="validarDivPersona()" placeholder="Nombres y Apellidos" value="<?php if (isset($_SESSION['referido'])) { echo $_SESSION['referido']; } ?>" >
-                                </div>
-                                <div class="deudor-control deudor-control__codigo-redimir">
-                                    <label for="codigo_redimir">Código para redimir (opcional)</label>
-                                    <input type="number" max="999999" min="0" step="1" class="form-control" id="codigo_redimir" name="codigo_redimir" onchange="validarCodigoRedimir(this, 6); validarDivPersona();" placeholder="Código de 6 dígitos" value="<?php if (isset($_SESSION['codigo_redimir'])) { echo $_SESSION['codigo_redimir']; } ?>" />
                                 </div>
                             </div>
                         </div>
@@ -327,7 +313,7 @@ class MainView
                         <div class="deudor-caja">
                             <div class="row">
                                 <div class="deudor-control" style="width: 330px;" >
-                                    <label for="nombre_empresa">Nombre de la empresa</label>
+                                    <label for="nombre_empresa">Nombre de la empresa (verifique que sea el nombre como registra en certificado de Cámara de Comercio o de Registro único tributario (RUT))</label>
                                     <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" onchange="validarDivDatosEmpresariales()" placeholder="Escribe..." value="<?php if (isset($_SESSION['nombre_empresa'])) { echo $_SESSION['nombre_empresa']; } ?>" required >
                                 </div>
                                 <div class="deudor-control" style="width: 200px;" >
@@ -372,62 +358,13 @@ class MainView
                                     <label for="antiguedad_empresa">Antigüedad empresa</label>
                                     <input type="number" class="form-control" id="antiguedad_empresa" name="antiguedad_empresa" min=0 onkeypress="return event.charCode >= 48 && event.charCode <= 57" onchange="validarDivDatosEmpresariales()" placeholder="Años..." value="<?php if (isset($_SESSION['antiguedad_empresa'])) { echo $_SESSION['antiguedad_empresa']; } ?>" required >
                                 </div>
-                            </div>
-                            <div class="row">
-                                <span style="font-weight: bold; padding-left: 15px; padding-top: 15px" >REPRESENTANTE LEGAL</span>
-                            </div>
-                            <div class="row">
-                                <div class="deudor-control" style="width: 450px;" >
-                                    <label for="nombres_representante_legal">Nombres</label>
-                                    <input type="text" class="form-control" id="nombres_representante_legal" name="nombres_representante_legal" onchange="validarDivDatosEmpresariales()" placeholder="Escribe..." value="<?php if (isset($_SESSION['nombres_representante_legal'])) { echo $_SESSION['nombres_representante_legal']; } ?>" required >
-                                </div>
-                                <div class="deudor-control" style="width: 200px;" >
-                                    <label for="primer_apellido_representante_legal">Primer apellido</label>
-                                    <input type="text" class="form-control" id="primer_apellido_representante_legal" name="primer_apellido_representante_legal" onchange="validarDivDatosEmpresariales()" placeholder="Escribe..." value="<?php if (isset($_SESSION['primer_apellido_representante_legal'])) { echo $_SESSION['primer_apellido_representante_legal']; } ?>" required >
-                                </div>
-                                <div class="deudor-control" style="width: 200px;" >
-                                    <label for="segundo_apellido_representante_legal">Segundo apellido</label>
-                                    <input type="text" class="form-control" id="segundo_apellido_representante_legal" name="segundo_apellido_representante_legal" onchange="validarDivDatosEmpresariales()" placeholder="Escribe..." value="<?php if (isset($_SESSION['segundo_apellido_representante_legal'])) { echo $_SESSION['segundo_apellido_representante_legal']; } ?>" required >
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="deudor-control" style="width: 120px; padding-right: 10px;">
-                                    <label for="tipo_identificacion_representante_legal">Identificación</label>
-                                    <select class="form-control" id="tipo_identificacion_representante_legal" name="tipo_identificacion_representante_legal" onchange="validarDivDatosEmpresariales()" required >
-                                        <option value="cedula_ciudadania" <?php if (isset($_SESSION['tipo_identificacion_representante_legal'])) { if ($_SESSION['tipo_identificacion_representante_legal'] == "cedula_ciudadania") { echo " selected "; } } ?> >C.C.</option>
-                                        <option value="cedula_extranjeria" <?php if (isset($_SESSION['tipo_identificacion_representante_legal'])) { if ($_SESSION['tipo_identificacion_representante_legal'] == "cedula_extranjeria") { echo " selected "; } } ?> >C.E.</option>
+                                <div class="deudor-control" style="width: 270px">
+                                    <label for="migrante-retornado">¿Alguno de los socios o accionistas de la empresa es migrante venezolano o colombiano retornado?</label>
+                                    <select class="form-control" id="migrante-retornado" name="migrante-retornado" onchange="validarDivPersona()" required >
+                                        <option value="" >-Escoge-</option>
+                                        <option value="si" <?php if (isset($_SESSION['migrante-retornado'])) { if ($_SESSION['migrante-retornado'] == "6") { echo " selected "; } } ?> >Si</option>
+                                        <option value="no" <?php if (isset($_SESSION['migrante-retornado'])) { if ($_SESSION['migrante-retornado'] == "12") { echo " selected "; } } ?> >No</option>
                                     </select>
-                                </div>
-                                <div class="deudor-control" style="width: 150px; padding-right: 10px;">
-                                    <label class="label-invisible" for="numero_identificacion_representante_legal">-</label>
-                                    <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="numero_identificacion_representante_legal" name="numero_identificacion_representante_legal" onchange="validarDivDatosEmpresariales()" placeholder="Número" value="<?php if (isset($_SESSION['numero_identificacion_representante_legal'])) { echo $_SESSION['numero_identificacion_representante_legal']; } ?>" required >
-                                </div>
-                                <div class="deudor-control" style="width: 380px;">
-                                    <label for="correo_representante_legal">Correo electrónico</label>
-                                    <input type="email" class="form-control" id="correo_representante_legal" name="correo_representante_legal" onchange="validarDivDatosEmpresariales()" placeholder="nombre@correo.com" value="<?php if (isset($_SESSION['correo_representante_legal'])) { echo $_SESSION['correo_representante_legal']; } ?>" required >
-                                </div>
-                                <div class="deudor-control" style="display: flex; flex-direction: column; width: 190px; padding-right: 10px;">
-                                    <label for="ciudad_representante_legal">Ciudad</label>
-                                    <select class="form-control js-example-basic-single" id="ciudad_representante_legal" name="ciudad_representante_legal" onchange="validarDivDatosEmpresariales()" required >
-                                        <option selected>-Escoge-</option>
-                                        <?php
-                                        for ($i = 0; $i < sizeof($listado_ciudades); $i++) {
-                                            echo '<option value="' . $listado_ciudades[$i]['codigo'] . '" ';
-                                            if (isset($_SESSION['ciudad_representante_legal'])) { if ($_SESSION['ciudad_representante_legal'] == $listado_ciudades[$i]['codigo']) { echo " selected "; } }
-                                            echo ' >' . mb_convert_case($listado_ciudades[$i]['ciudad'], MB_CASE_TITLE, "UTF-8") . ' (' . mb_convert_case($listado_ciudades[$i]['departamento'], MB_CASE_TITLE, "UTF-8") . ')</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="deudor-control" style="width: 450px; padding-right: 10px;" >
-                                    <label for="direccion_representante_legal">Dirección</label>
-                                    <input type="text" class="form-control" id="direccion_representante_legal" name="direccion_representante_legal" onchange="validarDivDatosEmpresariales()" placeholder="Escribe..." value="<?php if (isset($_SESSION['direccion_representante_legal'])) { echo $_SESSION['direccion_representante_legal']; } ?>" >
-                                </div>
-                                <div class="deudor-control" style="width: 190px; padding-right: 10px;">
-                                    <label for="celular_representante_legal">Celular</label>
-                                    <input type="text" inputmode="numeric" pattern="[0-9.]{10,15}" class="form-control" id="celular_representante_legal" name="celular_representante_legal" minlength="10" maxlength="15" title="Mínimo 10 dígitos, máximo 15 dígitos" onchange="validarDivDatosEmpresariales()" placeholder="XXX XXX XXXX" value="<?php if (isset($_SESSION['celular_representante_legal'])) { echo $_SESSION['celular_representante_legal']; } ?>" required >
                                 </div>
                             </div>
                         </div>
@@ -573,11 +510,24 @@ class MainView
                         </div>
                         <div class="deudor-caja">
                             <div class="row d-flex justify-content-center" style="padding-top: 25px; padding: 25px 30px 0 30px">
-                                <span>Adjunta los estados financieros con notas aclaratorias (Balance General y Estado de Resultados) del año <?php echo (intval(date('Y')) - 1) ?> o del último periodo que tengas disponibles</span>
+                                <span>Adjunta los siguientes documentos:</span>
                             </div>
-                            <div class="row d-flex justify-content-center" style="padding-top: 25px">
-                                <label class="boton-adjuntar-cedula boton-adjuntar-estados-financieros" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg)" id="adjuntar_estados_financieros_label" name="adjuntar_estados_financieros_label" for="adjuntar_estados_financieros" >Adjuntar<img class="boton-adjuntar-cedula-camara" style="height: 70% !important" id="adjuntar_estados_financieros_camara" name="adjuntar_estados_financieros_camara" src="Resources/img/camera.svg" /><img class="boton-adjuntar-cedula-icono-adjuntar" style="height: 70% !important; " id="adjuntar_estados_financieros_icono_adjuntar" name="adjuntar_estados_financieros_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" /><img class="boton-adjuntar-cedula-check" style="padding-left: 10px" id="adjuntar_estados_financieros_check" name="adjuntar_estados_financieros_check" src="Resources/img/check-listo.svg" /></label>
-                                <input id="adjuntar_estados_financieros" name="adjuntar_estados_financieros[]" type="file" accept="image/*, application/pdf" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_estados_financieros_label'));" onchange="validarEstadosFinancieros(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionEstadosFinancieros').modal('show'); document.getElementById('div_informacion_financiera_persona_juridica').scrollIntoView(); " required multiple >
+                            <div class="row d-flex" style="padding-top: 25px; justify-content: space-evenly;">
+                                <div style="display: flex; flex-direction: column; justify-content: space-between; max-width: 250px;">
+                                    <p>Balance general (del año 2022 o del último año que se tenga)</p>
+                                    <label class="boton-adjuntar-cedula boton-adjuntar-estados-financieros" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg)" id="adjuntar_estados_financieros_label" name="adjuntar_estados_financieros_label" for="adjuntar_estados_financieros" ><p>Balance general</p><img class="boton-adjuntar-cedula-icono-adjuntar" style="height: 70% !important; " id="adjuntar_estados_financieros_icono_adjuntar" name="adjuntar_estados_financieros_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" /></label>
+                                    <input id="adjuntar_estados_financieros" name="adjuntar_estados_financieros[]" type="file" accept="image/*, application/pdf" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_estados_financieros_label'));" onchange="validarEstadosFinancieros(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionEstadosFinancieros').modal('show'); document.getElementById('div_informacion_financiera_persona_juridica').scrollIntoView(); " required multiple >
+                                </div>
+                                <div style="display: flex; flex-direction: column; justify-content: space-between; max-width: 250px;">
+                                    <p>Estado de resultados (del año 2022 o del último año que se tenga)</p>
+                                    <label class="boton-adjuntar-cedula boton-adjuntar-estados-financieros" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg)" id="adjuntar_estados_financieros_label" name="adjuntar_estados_financieros_label" for="adjuntar_estados_financieros" ><p>Estado de resultados</p><img class="boton-adjuntar-cedula-icono-adjuntar" style="height: 70% !important; " id="adjuntar_estados_financieros_icono_adjuntar" name="adjuntar_estados_financieros_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" /></label>
+                                    <input id="adjuntar_estados_financieros" name="adjuntar_estados_financieros[]" type="file" accept="image/*, application/pdf" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_estados_financieros_label'));" onchange="validarEstadosFinancieros(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionEstadosFinancieros').modal('show'); document.getElementById('div_informacion_financiera_persona_juridica').scrollIntoView(); " required multiple >
+                                </div>
+                                <div style="display: flex; flex-direction: column; justify-content: space-between; max-width: 250px;">
+                                    <p>Declaración de renta (del año 2022 o del último año que se tenga)</p>
+                                    <label class="boton-adjuntar-cedula boton-adjuntar-estados-financieros" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg)" id="adjuntar_estados_financieros_label" name="adjuntar_estados_financieros_label" for="adjuntar_estados_financieros" ><p>Declaración de renta</p><img class="boton-adjuntar-cedula-icono-adjuntar" style="height: 70% !important; " id="adjuntar_estados_financieros_icono_adjuntar" name="adjuntar_estados_financieros_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" /></label>
+                                    <input id="adjuntar_estados_financieros" name="adjuntar_estados_financieros[]" type="file" accept="image/*, application/pdf" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_estados_financieros_label'));" onchange="validarEstadosFinancieros(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionEstadosFinancieros').modal('show'); document.getElementById('div_informacion_financiera_persona_juridica').scrollIntoView(); " required multiple >
+                                </div>
                             </div>
                         </div>
                         <div class="deudor-caja">
@@ -669,33 +619,6 @@ class MainView
                         </div>
                     </div>
 
-                    <div class="deudor-contenedor" id="div_codeudor" name="div_codeudor" >
-                        <div class="deudor-encabezado">
-                            <h4 class="deudor-encabezado__titulo">CODEUDOR</h4>
-                            <div class="deudor-seccion-icono">
-                                <img src="Resources/img/icono-codeudor.svg" />
-                            </div>
-                            <div class="deudor-seccion-listo-con-encabezado" id="div_codeudor_icono_pendiente" name="div_codeudor_icono_pendiente" >
-                                <img src="Resources/img/pending.svg" />
-                            </div>
-                            <div class="deudor-seccion-listo-con-encabezado" id="div_codeudor_icono_completo" name="div_codeudor_icono_completo">
-                                <img src="Resources/img/complete.svg" />
-                            </div>
-                        </div>
-                        <div class="deudor-caja" id="div_caja_codeudor" name="div_caja_codeudor" >
-                            <div class="row d-flex justify-content-center" style="padding: 0px 30px 25px 30px">
-                                <span>Ahora diligencia los datos de tu codeudor</span>
-                            </div>
-                            <div id="div_caja_codeudor_elementos"></div>
-							<div class="row d-flex justify-content-center">
-								<div style="padding: 10px 10px">
-									<img src="Resources/img/boton-agregar.svg" style="cursor: pointer;" onmouseenter="animacionBotonAgregarAlPasarMouse($(this), 1);" onmouseleave="animacionBotonAgregarAlPasarMouse($(this), 0);" onclick="animacionBotonAgregarAlPresionar($(this)); crearFilaCodeudor()" />
-									<span style="vertical-align: middle; padding-left: 5px"><b>Añadir codeudor</b></span>
-								</div>
-							</div>
-                        </div>
-                    </div>
-
                     <div class="deudor-contenedor" id="div_autorizaciones" name="div_autorizaciones" >
                         <div class="deudor-encabezado" style="height: 65px">
                             <h4 class="deudor-encabezado__titulo" style="margin: 0" >TÉRMINOS Y CONDICIONES</h4>
@@ -712,8 +635,7 @@ class MainView
                         <div class="deudor-caja" style="margin: 20px 0 0 0 !important" >
                             <div class="row" style="text-align: justify !important; padding: 0px 30px">
                                 <p style="word-break: break-word;">
-                                    Por medio del presente escrito autorizo a Vanka SAS o a quien represente sus derechos, para que adelante las consultas que sean necesarias en
-                                    relación al comportamiento financiero en las bases o bancos de datos propias o de centrales de riesgo (Datacrédito, Cifin, entre otras y similares).
+                                Por medio del presente escrito autorizo a Vanka SAS (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) o a quien represente sus derechos, para que adelante la consulta en relación al comportamiento financiero en las bases de datos propias o de centrales de riesgo (Datacrédito, Cifin, entre otras similares).
                                     <!--<p style="word-break: break-word;">Yo <b><span id="autorizaciones_nombre" name="autorizaciones_nombre">NOMBRE Y</span> <span id="autorizaciones_primer_apellido" name="autorizaciones_primer_apellido">APELLIDO SOLICITANTE</span> <span id="autorizaciones_segundo_apellido" name="autorizaciones_segundo_apellido"></span></b> confirmo haber leído-->
                                     <!--<span id="costo_consulta" name="costo_consulta"></span>.-->
                                 </p>
@@ -727,24 +649,40 @@ class MainView
                         </div>
                     </div>
 
+                    <div class="deudor-contenedor" id="div_autorizaciones_consulta_centrales" name="div_autorizaciones_consulta_centrales" >
+                        <div class="deudor-encabezado" style="height: 65px">
+                            <h4 class="deudor-encabezado__titulo" style="margin: 0" >CONSULTA EN CENTRALES DE RIESGO</h4>
+                            <div class="deudor-seccion-icono">
+                                <img src="Resources/img/icono-terminos-condiciones.svg" />
+                            </div>
+                            <div class="deudor-seccion-listo-con-encabezado" id="div_terminos_y_condiciones_icono_pendiente" name="div_terminos_y_condiciones_icono_pendiente" >
+                                <img src="Resources/img/pending.svg" />
+                            </div>
+                            <div class="deudor-seccion-listo-con-encabezado" id="div_terminos_y_condiciones_icono_completo" name="div_terminos_y_condiciones_icono_completo">
+                                <img src="Resources/img/complete.svg" />
+                            </div>
+                        </div>
+                        <div class="deudor-caja" style="margin: 20px 0 0 0 !important" >
+                            <div class="row" style="text-align: justify !important; padding: 0px 30px">
+                                <p style="word-break: break-word;">
+                                Por medio del presente escrito autorizo a Vanka SAS (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) o a quien represente sus derechos, para que adelante la consulta en relación al comportamiento financiero en las bases de datos propias o de centrales de riesgo (Datacrédito, Cifin, entre otras similares).
+                                    <!--<p style="word-break: break-word;">Yo <b><span id="autorizaciones_nombre" name="autorizaciones_nombre">NOMBRE Y</span> <span id="autorizaciones_primer_apellido" name="autorizaciones_primer_apellido">APELLIDO SOLICITANTE</span> <span id="autorizaciones_segundo_apellido" name="autorizaciones_segundo_apellido"></span></b> confirmo haber leído-->
+                                    <!--<span id="costo_consulta" name="costo_consulta"></span>.-->
+                                </p>
+                            </div>
+                            <div class="row d-flex justify-content-center" style="padding-top: 4px">
+                                <a onclick="$('#modalConsultaCentrales').modal('toggle');"><u>Ver términos y condiciones</u></a>
+                            </div>
+                            <div class="row d-flex justify-content-center" style="padding-top: 20px">
+                                <button id="btnAutorizacion" name="btnAutorizacion" class="boton-formulario" style="margin-bottom: 20px" type="button" onclick="validarBotonAutorizacion(this)" >Acepto</button>
+                                <button id="btnAutorizacion" name="btnAutorizacion" class="boton-formulario" style="margin-bottom: 20px" type="button" onclick="validarBotonAutorizacion(this)" >No acepto</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div style="text-align: center; padding-top: 30px; padding-bottom: 200px;" id="div_botones" name="div_botones" >
 
                         <div style="display: flex; flex-direction: row; align-items: flex-start; justify-content: center; flex-wrap: wrap">
-                            <div style="display: flex; flex-direction: column">
-                                <label class="boton-adjuntar-cedula" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg);" id="adjuntar_cedula_label" name="adjuntar_cedula_label" for="adjuntar_cedula" >
-                                    <span id="texto_adjuntar_cedula" name="texto_adjuntar_cedula">Adjunta tu cédula</span>
-                                    <span style="white-space:nowrap;">
-									<img class="boton-adjuntar-cedula-camara" id="adjuntar_cedula_camara" name="adjuntar_cedula_camara" src="Resources/img/camera.svg" />
-									<img class="boton-adjuntar-cedula-icono-adjuntar" id="adjuntar_cedula_icono_adjuntar" name="adjuntar_cedula_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" />
-								</span>
-                                    <img class="boton-adjuntar-cedula-check" id="adjuntar_cedula_check" name="adjuntar_cedula_check" src="Resources/img/check-listo.svg" />
-                                </label>
-                                * Solo la cara frontal
-                                <input id="adjuntar_cedula" name="adjuntar_cedula" type="file" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_cedula_label'));" onchange="validarCedula(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " accept="image/*, application/pdf" oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionCedula').modal('show'); setTimeout( function() { document.getElementById('div_botones').scrollIntoView(); }, 1); " required >
-
-                                <label id="label_adjuntar_cedula_representante_legal" name="label_adjuntar_cedula_representante_legal">(Representante legal)</label>
-                            </div>
-
                             <button id="btnSiguiente" name="btnSiguiente" class="boton-siguiente" type="submit" onclick="animacionBotonSiguienteAlPresionar($(this)); validarEstadoBotonSiguiente(); enviarInformacionDeudor();" >Siguiente</button>
                             <!--<button id="btnSiguiente" name="btnSiguiente" class="boton-siguiente" type="submit" >Siguiente</button>-->
                         </div>
@@ -762,43 +700,6 @@ class MainView
 
         </div>
 
-        <!-- Modal -->
-        <!--
-        <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalSiguiente" tabindex="-1" role="dialog" aria-labelledby="modalTitulo" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content" style="padding: 20px; max-width: 600px !important;">
-              <div class="modal-header" style="border-bottom: 0">
-                <h3 class="modal-title" id="modalTitulo">Estás a la mitad <b>del camino</b></h3>
-                <div class="deudor-seccion-listo" id="div_persona_icono_pendiente" name="div_persona_icono_pendiente" >
-                    <img src="Resources/img/flag.svg" />
-                </div>
-              </div>
-              <div class="modal-body">
-                <p>
-                    <input class="js-copytextarea" type="text" name="Element To Be Copied" id="inputContainingTextToBeCopied" style="display:none; position: relative; left: -10000px;"/>
-                </p>
-                <p>Ahora necesitamos conocer a la persona que va a respaldar tu crédito.</p>
-                <p>Puedes compartirle este formulario para completarlo o continuar por tu cuenta; ten presente que necesitarás su autorización, datos y documento de identidad.</p>
-                <div class="row">
-                    <div class="col-8 div-enlace-codeudor">
-                        <p id="text" style="word-break: break-word"><a href="" id="enlace_codeudor" name="enlace_codeudor" ></a></p>
-                        <p id="copiado_exitoso" style="color: green; font-weight: bold"></p>
-                    </div>
-                    <hr class="separador-movil">
-                    <div class="col-4">
-                        <button class="boton-popup js-textareacopybtn" type="button" >Copiar link</button>
-                    </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button id="btnCompartirLink" name="btnCompartirLink" class="js-textareacopybtn boton-formulario active" style="vertical-align:top; margin-bottom: 10px; width: 200px !important; left: 30px" >Compartir formulario</button>
-                <hr class="separador-movil">
-                <button id="btnContinuar" name="btnContinuar" class="boton-continuar" type="button" onclick="" >continuar <img src="Resources/img/flecha-siguiente.svg" /></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        -->
         <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalSiguiente" tabindex="-1" role="dialog" aria-labelledby="modalTitulo" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content" style="padding: 20px; max-width: 600px !important;">
@@ -943,7 +844,7 @@ class MainView
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Modal para los términos y condiciones -->
         <div class="modal fade" style="overflow-y: scroll; -webkit-overflow-scrolling: touch; " data-backdrop="static" data-keyboard="false" id="modalTerminosYCondiciones" tabindex="-1" role="dialog" aria-labelledby="modalTitulo" aria-hidden="true">
             <div class="modal-dialog" style="max-width: 900px !important" role="document">
                 <div class="modal-content" style="max-width: 900px" >
@@ -955,22 +856,10 @@ class MainView
                     </div>
                     <div class="modal-body">
                         <p>
-                            <b>Sarlaft.</b> Yo <b><span id="sarlaft_nombre" name="sarlaft_nombre">NOMBRE Y</span> <span id="sarlaft_primer_apellido" name="sarlaft_primer_apellido">APELLIDO SOLICITANTE</span> <span id="sarlaft_segundo_apellido" name="sarlaft_segundo_apellido"></span></b>
-                            declaro bajo la gravedad de juramento: que los recursos y dinero que recibo de Vanka S.A.S., como consecuencia del Contrato de Mutuo suscrito
-                            con esta entidad, no van a ser destinados para la financiación del terrorismo o cualquier otra conducta delictiva o ilícita, de acuerdo con las
-                            normas penales vigentes en Colombia; así mismo, declaro que en mi actividad no incurro ni incurriré en ninguna actividad ilícita de las
-                            contempladas en el Código Penal Colombiano o en cualquier otra norma que lo modifique o adicione. De igual forma, autorizo a Vanka S.A.S.
-                            reportar a las autoridades competentes cualquier operación y/o actividad sospechosa. Así mismo, me comprometo a cumplir con los requisitos del
-                            Sistema de Autocontrol y Gestión del Riesgo de Lavado de Activos y Financiación del Terrorismo – SARLAFT- implementado por Vanka S.A.S. o que
-                            llegaré a implementar o régimen o políticas similares, dentro de los que se encuentran, entregar información veraz y verificable junto con la
-                            totalidad de los soportes documentales exigidos y a actualizar su información personal, laboral o institucional, según aplique, así como la
-                            información comercial y financiera, cada vez que haya cambios en la misma, y, por lo menos cada vez que así lo solicite Vanka S.A.S.
-                        </p>
-                        <p>
                             <b>Protección de Datos Personales.</b> Yo <b><span id="proteccion_datos_nombre" name="proteccion_datos_nombre">NOMBRE Y</span> <span id="proteccion_datos_primer_apellido" name="proteccion_datos_primer_apellido">APELLIDO SOLICITANTE</span> <span id="proteccion_datos_segundo_apellido" name="proteccion_datos_segundo_apellido"></span></b>
                             en mi calidad de titular de la información, por medio de la presente, manifiesto mi consentimiento previo, libre, expreso e informado para que
-                            Vanka S.A.S. o a quien represente sus derechos para tratar, consultar, solicitar, procesar, reportar y divulgar los datos personales por mi
-                            suministrados, conforme su Política de Tratamiento de Datos Personales y finalidades indicadas. De igual forma, manifiesto que Vanka S.A.S., de
+                            Vanka S.A.S. (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) o a quien represente sus derechos para tratar, consultar, solicitar, procesar, reportar y divulgar los datos personales por mi
+                            suministrados, conforme su Política de Tratamiento de Datos Personales y finalidades indicadas. De igual forma, manifiesto que Vanka S.A.S. (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio), de
                             manera clara y expresa, me informó de lo siguiente: (1) los datos personales que serán recolectados o que han sido recolectados; (2) las
                             finalidades específicas del tratamiento de los datos personales recolectados y para los cuales se obtiene el consentimiento; (3) el tratamiento
                             al cual serán sometidos los datos personales y las Políticas para el Tratamiento de Datos Personales, así como el lugar en donde puedo consultar
@@ -979,20 +868,33 @@ class MainView
                             procedimiento para su ejercicio; (6) la identificación, dirección física o electrónica y teléfono del Responsable del Tratamiento. Lo anterior
                             en base a las leyes 1712 de 2014 y 1377 de 2013.
                         </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="boton-formulario active" type="button" data-dismiss="modal" >Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Consulta en centrales de riesgo -->
+        <div class="modal fade" style="overflow-y: scroll; -webkit-overflow-scrolling: touch; " data-backdrop="static" data-keyboard="false" id="modalConsultaCentrales" tabindex="-1" role="dialog" aria-labelledby="modalTitulo" aria-hidden="true">
+            <div class="modal-dialog" style="max-width: 900px !important" role="document">
+                <div class="modal-content" style="max-width: 900px" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitulo">Consulta en centrales de riesgo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
                         <p>
-                            <b>Reporte a centrales de riesgo.</b> Yo <b><span id="consulta_centrales_nombre" name="consulta_centrales_nombre">NOMBRE Y</span> <span id="consulta_centrales_primer_apellido" name="consulta_centrales_primer_apellido">APELLIDO SOLICITANTE</span> <span id="consulta_centrales_segundo_apellido" name="consulta_centrales_segundo_apellido"></span></b>
-                            autorizo, de forma expresa, informada y consentida a Vanka S.A.S. o a quien represente sus derechos, para que adelante las consultas que sean
+                            <b>Consulta en centrales de riesgo.</b> Yo <b><span id="consulta_centrales_nombre" name="consulta_centrales_nombre">NOMBRE Y</span> <span id="consulta_centrales_primer_apellido" name="consulta_centrales_primer_apellido">APELLIDO SOLICITANTE</span> <span id="consulta_centrales_segundo_apellido" name="consulta_centrales_segundo_apellido"></span></b>
+                            autorizo, de forma expresa, informada y consentida a Vanka S.A.S. (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) o a quien represente sus derechos, para que adelante las consultas que sean
                             necesarias en las bases o bancos de datos propias o de centrales de riesgo (desacredito, cifin, entre otras y similares) relativas a mi
                             comportamiento comercial, crediticio y el manejo de los diferentes productos de las entidades financieras, solidarias, del sector real y
                             similares que tenga y, en general, sobre el cumplimiento de todas las obligaciones de carácter pecuniario a mi cargo. Igualmente, autorizo a
-                            Vanka S.A.S. para que haga los reportes pertinentes a las centrales de riesgos existentes o que llegaren a existir, de datos, tratados o sin
+                            Vanka S.A.S. (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) para que haga los reportes pertinentes a las centrales de riesgos existentes o que llegaren a existir, de datos, tratados o sin
                             tratar, tanto sobre el cumplimiento oportuno como sobre el incumplimiento, si lo hubiera, de las obligaciones, o de los deberes legales o
-                            contractuales de contenido patrimonial cuando quiera que incurra en mora en el pago de mis obligaciones con Vanka S.A.S.
-                        </p>
-                        <p>
-                            <b>Declaración.</b> Yo <b><span id="declaracion_nombre" name="declaracion_nombre">NOMBRE Y</span> <span id="declaracion_primer_apellido" name="declaracion_primer_apellido">APELLIDO SOLICITANTE</span> <span id="declaracion_segundo_apellido" name="declaracion_segundo_apellido"></span></b>
-                            declaro que la información por mí suministrada es veraz, completa y exacta y me obligo a mantenerla actualizada. Declaro que conozco y acepto
-                            cumplir el Contrato de Mutuo y Políticas de Vanka S.A.S. y que me han explicado y he aceptado los mismos y los productos y servicios ofrecidos.
+                            contractuales de contenido patrimonial cuando quiera que incurra en mora en el pago de mis obligaciones con Vanka S.A.S. (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio).
                         </p>
                     </div>
                     <div class="modal-footer">
@@ -1051,6 +953,9 @@ class MainView
 
         <!-- Encabezados fijos y ajuste de controles en forma inválida  -->
         <script>
+            window.addEventListener('load', () => {
+                document.getElementById('btnPersonaJuridica').click()
+            })
 
             var form = $('#mainForm');
             //var navbar = $('#div_datos_personales .deudor-encabezado')
@@ -1139,7 +1044,7 @@ class MainView
                 $(this).removeClass("deudor-contenedor-con-sombra");
             });
 
-            <!-- Evita que el formulario se envíe con Enter -->
+            // <!-- Evita que el formulario se envíe con Enter -->
             $('body').on('keydown', 'input, select', function(e) {
                 if (e.key === "Enter") {
                     var self = $(this), form = self.parents('form:eq(0)'), focusable, next;
@@ -1177,10 +1082,7 @@ class MainView
                     //}
                 });
 
-                if ($("#btnPersonaNatural").hasClass("active")) {
-                    validarBotonPersona(document.getElementById("btnPersonaNatural"));
-                }
-                else if ($("#btnPersonaJuridica").hasClass("active")) {
+                if ($("#btnPersonaJuridica").hasClass("active")) {
                     validarBotonPersona(document.getElementById("btnPersonaJuridica"));
                 }
 
@@ -1621,15 +1523,11 @@ class MainView
             }
 
             function validacionInicialBotonPersona() {
-
-                if ($("#tipo_persona").val() == "natural") {
-                    validarBotonPersona(document.getElementById("btnPersonaNatural"));
-                }
-                else if ($("#tipo_persona").val() == "juridica") {
+                if ($("#tipo_persona").val() == "juridica") {
                     validarBotonPersona(document.getElementById("btnPersonaJuridica"));
                 }
             }
-
+            
             function validarBotonPersona(elem) {
                 $("#div_codeudor").show();
                 $("#div_autorizaciones").show();
