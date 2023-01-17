@@ -520,13 +520,13 @@ class MainView
                                 </div>
                                 <div style="display: flex; flex-direction: column; justify-content: space-between; max-width: 250px;">
                                     <p>Estado de resultados (del año 2022 o del último año que se tenga)</p>
-                                    <label class="boton-adjuntar-cedula boton-adjuntar-estados-financieros" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg)" id="adjuntar_estados_financieros_label" name="adjuntar_estados_financieros_label" for="adjuntar_estados_financieros" ><p>Estado de resultados</p><img class="boton-adjuntar-cedula-icono-adjuntar" style="height: 70% !important; " id="adjuntar_estados_financieros_icono_adjuntar" name="adjuntar_estados_financieros_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" /></label>
-                                    <input id="adjuntar_estados_financieros" name="adjuntar_estados_financieros[]" type="file" accept="image/*, application/pdf" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_estados_financieros_label'));" onchange="validarEstadosFinancieros(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionEstadosFinancieros').modal('show'); document.getElementById('div_informacion_financiera_persona_juridica').scrollIntoView(); " required multiple >
+                                    <label class="boton-adjuntar-cedula boton-adjuntar-estados-financieros" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg)" id="adjuntar_estado_de_resultado_label" name="adjuntar_estado_de_resultado_label" for="adjuntar_estado_de_resultado" ><p>Estado de resultados</p><img class="boton-adjuntar-cedula-icono-adjuntar" style="height: 70% !important; " id="adjuntar_estados_resultado_icono_adjuntar" name="adjuntar_estados_resultado_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" /></label>
+                                    <input id="adjuntar_estado_de_resultado" name="adjuntar_estado_de_resultado[]" type="file" accept="image/*, application/pdf" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_estado_de_resultado_label'));" onchange="validarEstadosFinancieros(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionEstadosFinancieros').modal('show'); document.getElementById('div_informacion_financiera_persona_juridica').scrollIntoView(); " required multiple >
                                 </div>
                                 <div style="display: flex; flex-direction: column; justify-content: space-between; max-width: 250px;">
                                     <p>Declaración de renta (del año 2022 o del último año que se tenga)</p>
-                                    <label class="boton-adjuntar-cedula boton-adjuntar-estados-financieros" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg)" id="adjuntar_estados_financieros_label" name="adjuntar_estados_financieros_label" for="adjuntar_estados_financieros" ><p>Declaración de renta</p><img class="boton-adjuntar-cedula-icono-adjuntar" style="height: 70% !important; " id="adjuntar_estados_financieros_icono_adjuntar" name="adjuntar_estados_financieros_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" /></label>
-                                    <input id="adjuntar_estados_financieros" name="adjuntar_estados_financieros[]" type="file" accept="image/*, application/pdf" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_estados_financieros_label'));" onchange="validarEstadosFinancieros(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionEstadosFinancieros').modal('show'); document.getElementById('div_informacion_financiera_persona_juridica').scrollIntoView(); " required multiple >
+                                    <label class="boton-adjuntar-cedula boton-adjuntar-estados-financieros" style="background-image: url(Resources/img/boton-adjuntar-cedula.svg)" id="adjuntar_declaracion_renta_label" name="adjuntar_declaracion_renta_label" for="adjuntar_declaracion_renta" ><p>Declaración de renta</p><img class="boton-adjuntar-cedula-icono-adjuntar" style="height: 70% !important; " id="adjuntar_declaracion_renta_icono_adjuntar" name="adjuntar_declaracion_renta_icono_adjuntar" src="Resources/img/icono-adjuntar.svg" /></label>
+                                    <input id="adjuntar_declaracion_renta" name="adjuntar_declaracion_renta[]" type="file" accept="image/*, application/pdf" onclick="animacionBotonAdjuntarAlPresionar($('#adjuntar_declaracion_renta_label'));" onchange="validarEstadosFinancieros(); if( $(this).is(':invalid') == false ){ $('*').unbind('invalid'); } " oninvalid="$('*').on('invalid', function(e) { return false }); $('#modalValidacionEstadosFinancieros').modal('show'); document.getElementById('div_informacion_financiera_persona_juridica').scrollIntoView(); " required multiple >
                                 </div>
                             </div>
                         </div>
@@ -636,8 +636,6 @@ class MainView
                             <div class="row" style="text-align: justify !important; padding: 0px 30px">
                                 <p style="word-break: break-word;">
                                 Por medio del presente escrito autorizo a Vanka SAS (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) o a quien represente sus derechos, para que adelante la consulta en relación al comportamiento financiero en las bases de datos propias o de centrales de riesgo (Datacrédito, Cifin, entre otras similares).
-                                    <!--<p style="word-break: break-word;">Yo <b><span id="autorizaciones_nombre" name="autorizaciones_nombre">NOMBRE Y</span> <span id="autorizaciones_primer_apellido" name="autorizaciones_primer_apellido">APELLIDO SOLICITANTE</span> <span id="autorizaciones_segundo_apellido" name="autorizaciones_segundo_apellido"></span></b> confirmo haber leído-->
-                                    <!--<span id="costo_consulta" name="costo_consulta"></span>.-->
                                 </p>
                             </div>
                             <div class="row d-flex justify-content-center" style="padding-top: 4px">
@@ -655,10 +653,10 @@ class MainView
                             <div class="deudor-seccion-icono">
                                 <img src="Resources/img/icono-terminos-condiciones.svg" />
                             </div>
-                            <div class="deudor-seccion-listo-con-encabezado" id="div_terminos_y_condiciones_icono_pendiente" name="div_terminos_y_condiciones_icono_pendiente" >
+                            <div class="deudor-seccion-listo-con-encabezado" id="div_centrales_riesgo_icono_pendiente" name="div_centrales_riesgo_icono_pendiente" >
                                 <img src="Resources/img/pending.svg" />
                             </div>
-                            <div class="deudor-seccion-listo-con-encabezado" id="div_terminos_y_condiciones_icono_completo" name="div_terminos_y_condiciones_icono_completo">
+                            <div class="deudor-seccion-listo-con-encabezado" id="div_centrales_riesgo_icono_completo" name="div_centrales_riesgo_icono_completo">
                                 <img src="Resources/img/complete.svg" />
                             </div>
                         </div>
@@ -666,16 +664,14 @@ class MainView
                             <div class="row" style="text-align: justify !important; padding: 0px 30px">
                                 <p style="word-break: break-word;">
                                 Por medio del presente escrito autorizo a Vanka SAS (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) o a quien represente sus derechos, para que adelante la consulta en relación al comportamiento financiero en las bases de datos propias o de centrales de riesgo (Datacrédito, Cifin, entre otras similares).
-                                    <!--<p style="word-break: break-word;">Yo <b><span id="autorizaciones_nombre" name="autorizaciones_nombre">NOMBRE Y</span> <span id="autorizaciones_primer_apellido" name="autorizaciones_primer_apellido">APELLIDO SOLICITANTE</span> <span id="autorizaciones_segundo_apellido" name="autorizaciones_segundo_apellido"></span></b> confirmo haber leído-->
-                                    <!--<span id="costo_consulta" name="costo_consulta"></span>.-->
                                 </p>
                             </div>
                             <div class="row d-flex justify-content-center" style="padding-top: 4px">
                                 <a onclick="$('#modalConsultaCentrales').modal('toggle');"><u>Ver términos y condiciones</u></a>
                             </div>
                             <div class="row d-flex justify-content-center" style="padding-top: 20px">
-                                <button id="btnAutorizacion" name="btnAutorizacion" class="boton-formulario" style="margin-bottom: 20px" type="button" onclick="validarBotonAutorizacion(this)" >Acepto</button>
-                                <button id="btnAutorizacion" name="btnAutorizacion" class="boton-formulario" style="margin-bottom: 20px" type="button" onclick="validarBotonAutorizacion(this)" >No acepto</button>
+                                <button id="btnSiCentralesRiesgo" name="btnSiCentralesRiesgo" class="boton-formulario" style="margin-bottom: 20px" type="button" onclick="validarBotonAutorizacionCentrales(this)">Acepto</button>
+                                <button id="btnNoCentralesRiesgo" name="btnNoCentralesRiesgo" class="boton-formulario" style="margin-bottom: 20px" type="button" onclick="validarBotonAutorizacionCentrales(this)">No acepto</button>
                             </div>
                         </div>
                     </div>
@@ -956,7 +952,6 @@ class MainView
             window.addEventListener('load', () => {
                 document.getElementById('btnPersonaJuridica').click()
             })
-
             var form = $('#mainForm');
             //var navbar = $('#div_datos_personales .deudor-encabezado')
 
@@ -1334,6 +1329,8 @@ class MainView
             $("#div_codeudor_icono_completo").hide();
             $("#div_terminos_y_condiciones_icono_pendiente").hide();
             $("#div_terminos_y_condiciones_icono_completo").hide();
+            $("#div_centrales_riesgo_icono_pendiente").hide();
+            $("#div_centrales_riesgo_icono_completo").hide();
 
             $("#div_datos_personales").hide();
             $("#div_datos_personales *").removeAttr("required");
@@ -1345,14 +1342,14 @@ class MainView
             $("#div_activos_persona_natural").hide();
             $("#div_activos_persona_natural *").removeAttr("required");
             $("#div_datos_empresariales *").removeAttr("required");
-            $("#div_datos_empresariales").hide();
+            // $("#div_datos_empresariales").hide();
             $("#div_informacion_financiera_persona_juridica *").removeAttr("required");
-            $("#div_informacion_financiera_persona_juridica").hide();
+            // $("#div_informacion_financiera_persona_juridica").hide();
             $("#div_codeudor").hide();
             $("#div_codeudor *").removeAttr("required");
-            $("#div_autorizaciones").hide();
+            // $("#div_autorizaciones").hide();
             $("#div_autorizaciones *").removeAttr("required");
-            $("#div_botones").hide();
+            // $("#div_botones").hide();
             $("#div_botones *").removeAttr("required");
 
             validarCedula();
@@ -1743,40 +1740,6 @@ class MainView
                 }
             }
 
-            /*function habilitarSiguiente() {
-
-                if ($("#tipo_persona").val() == "natural") {
-                    if ($("#btnAutorizacion").hasClass("active") &&
-                        document.getElementById("adjuntar_cedula").files.length) {
-
-                        $("#btnSiguiente").addClass('boton-siguiente-listo');
-                        $("#btnSiguiente").removeClass('boton-siguiente-desactivado');
-                        $("#btnSiguiente").attr('disabled', false);
-                    }
-                    else {
-                        $("#btnSiguiente").addClass('boton-siguiente-desactivado');
-                        $("#btnSiguiente").removeClass('boton-siguiente-listo');
-                        $("#btnSiguiente").attr('disabled', true);
-                    }
-                }
-
-                else {
-                    if ($("#btnAutorizacion").hasClass("active") &&
-                        document.getElementById("adjuntar_cedula").files.length &&
-                        document.getElementById("adjuntar_estados_financieros").files.length) {
-
-                        $("#btnSiguiente").addClass('boton-siguiente-listo');
-                        $("#btnSiguiente").removeClass('boton-siguiente-desactivado');
-                        $("#btnSiguiente").attr('disabled', false);
-                    }
-                    else {
-                        $("#btnSiguiente").addClass('boton-siguiente-desactivado');
-                        $("#btnSiguiente").removeClass('boton-siguiente-listo');
-                        $("#btnSiguiente").attr('disabled', true);
-                    }
-                }
-            }*/
-
             function validarBotonAutorizacion(elem) {
                 if ($("#btnAutorizacion").hasClass("active")) {
                     $("#btnAutorizacion").removeClass('active');
@@ -1789,6 +1752,33 @@ class MainView
                     $("#div_terminos_y_condiciones_icono_completo").show();
                 }
                 //habilitarSiguiente();
+            }
+            function validarBotonAutorizacionCentrales(elem) {
+                if(elem.innerText === "No acepto") {
+                    if($("#btnNoCentralesRiesgo").hasClass("active")) {
+                        $("#btnNoCentralesRiesgo").removeClass('active');
+                        $("#btnSiCentralesRiesgo").removeClass('active');
+                        $("#div_centrales_riesgo_icono_pendiente").show();
+                        $("#div_centrales_riesgo_icono_completo").hide();                    
+                    }else {
+                        $("#btnNoCentralesRiesgo").addClass('active');
+                        $("#btnSiCentralesRiesgo").removeClass('active');
+                        $("#div_centrales_riesgo_icono_pendiente").hide();
+                        $("#div_centrales_riesgo_icono_completo").show();
+                    }                    
+                }else if(elem.innerText === "Acepto") {
+                    if($("#btnSiCentralesRiesgo").hasClass("active")) {
+                        $("#btnSiCentralesRiesgo").removeClass('active');
+                        $("#btnNoCentralesRiesgo").removeClass('active');
+                        $("#div_centrales_riesgo_icono_pendiente").show();
+                        $("#div_centrales_riesgo_icono_completo").hide();                    
+                    }else {
+                        $("#btnSiCentralesRiesgo").addClass('active');
+                        $("#btnNoCentralesRiesgo").removeClass('active');
+                        $("#div_centrales_riesgo_icono_pendiente").hide();
+                        $("#div_centrales_riesgo_icono_completo").show();
+                    }
+                }
             }
 
             function validarCedula() {
@@ -1828,7 +1818,6 @@ class MainView
 						   return;
 						}
 					}
-
 					$("#adjuntar_estados_financieros_label").addClass('boton-adjuntar-cedula-activo');
 					$("#adjuntar_estados_financieros_check").css("visibility", "visible");
 					$("#adjuntar_estados_financieros_camara").css("visibility", "hidden");
@@ -1845,6 +1834,41 @@ class MainView
 					$("#adjuntar_estados_financieros_camara").removeClass("oculto");
 					$("#adjuntar_estados_financieros_icono_adjuntar").removeClass("oculto");
 				}
+                if (document.getElementById("adjuntar_estado_de_resultado").files.length) {
+                    for (i = 0; i < document.getElementById("adjuntar_estado_de_resultado").files.length; i++)
+					{
+						if (document.getElementById("adjuntar_estado_de_resultado").files[i].size > 26214400) {
+						   alert("El archivo no puede superar los 25MB");
+						   this.value = "";
+						   return;
+						}
+					}
+                    $("#adjuntar_estado_de_resultado_label").addClass('boton-adjuntar-cedula-activo');
+                    $("#adjuntar_estados_resultado_icono_adjuntar").css("visibility", "hidden");
+                    $("#adjuntar_estados_resultado_icono_adjuntar").addClass("oculto");
+                } else {
+                    $("#adjuntar_estado_de_resultado_label").removeClass('boton-adjuntar-cedula-activo');
+                    $("#adjuntar_estados_resultado_icono_adjuntar").css("visibility", "visible");
+                    $("#adjuntar_estados_resultado_icono_adjuntar").removeClass("oculto");
+                    
+                }
+                if (document.getElementById("adjuntar_declaracion_renta").files.length) {
+                    for (i = 0; i < document.getElementById("adjuntar_declaracion_renta").files.length; i++)
+					{
+						if (document.getElementById("adjuntar_declaracion_renta").files[i].size > 26214400) {
+						   alert("El archivo no puede superar los 25MB");
+						   this.value = "";
+						   return;
+						}
+					}
+                    $("#adjuntar_declaracion_renta_label").addClass('boton-adjuntar-cedula-activo');
+                    $("#adjuntar_declaracion_renta_icono_adjuntar").css("visibility", "hidden");
+                    $("#adjuntar_declaracion_renta_icono_adjuntar").addClass("oculto");
+                } else {
+                    $("#adjuntar_declaracion_renta_label").removeClass('boton-adjuntar-cedula-activo');
+                    $("#adjuntar_declaracion_renta_icono_adjuntar").css("visibility", "visible");
+                    $("#adjuntar_declaracion_renta_icono_adjuntar").removeClass("oculto");
+                }
 				//habilitarSiguiente();
 			}
 
