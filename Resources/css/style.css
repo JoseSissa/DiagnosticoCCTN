@@ -90,8 +90,8 @@ h2 {
   width: 40px;
 }
 .imagenes-logos img:nth-child(4) {
-  width: 80px;
-  height: 73px;
+  width: 50px;
+  height: 55px;
 }
 
 @media not screen and (min-width: 500px) {
@@ -116,8 +116,8 @@ h2 {
     width: 55px;
   }
   .imagenes-logos img:nth-child(4) {
-    width: 111px;
-    height: 102px;
+    width: 110px;
+    height: 120px;
   }
 }
 @media (min-width: 768px) {
@@ -134,8 +134,8 @@ h2 {
     width: 80px;
   }
   .imagenes-logos img:nth-child(4) {
-    width: 160px;
-    height: 147px;
+    width: 110px;
+    height: 120px;
   }
 }
 @media (min-width: 992px) {
@@ -152,8 +152,8 @@ h2 {
     width: 103px;
   }
   .imagenes-logos img:nth-child(4) {
-    width: 206px;
-    height: 190px;
+    width: 110px;
+    height: 120px;
   }
 }
 
@@ -319,7 +319,7 @@ button.active {
 
 .deudor-caja {
   font-size: 16px;
-  margin: 40px 0 !important;
+  margin: 12px 0 !important;
   padding: 0 10px !important;
 }
 
