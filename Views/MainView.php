@@ -109,24 +109,21 @@ class MainView
 
                     <div class="deudor-contenedor" id="div_tipo_persona" name="div_tipo_persona" >
                         <div class="deudor-caja">
-                            <div class="deudor-seccion-listo" id="div_persona_icono_pendiente" name="div_persona_icono_pendiente" >
-                                <img src="Resources/img/pending.svg" />
-                            </div>
-                            <div class="deudor-seccion-listo" id="div_persona_icono_completo" name="div_persona_icono_completo">
-                                <img src="Resources/img/complete.svg" />
-                            </div>
-                            <!-- <div class="row d-flex justify-content-center" style="text-align: center; padding: 0 38px 25px 38px">
-                                Primero escoge que tipo de persona eres:
-                            </div> -->
-                            <div class="row justify-content-center">
-                                <input type="hidden" id="tipo_persona" name="tipo_persona" value="<?php if (isset($_SESSION['tipo_persona'])) { echo $_SESSION['tipo_persona']; } ?>" />
-                                <div>
-                                    <button id="btnPersonaJuridica" name="btnPersonaJuridica" class="boton-formulario" type="button" onclick="validarBotonPersona(this)">Persona jurídica</button>
+                            <div class="deudor-encabezado">
+                                <h4 class="deudor-encabezado__titulo">DATOS GENERALES</h4>
+                                <div class="deudor-seccion-icono">
+                                    <img src="Resources/img/icono-datos-personales.svg" />
                                 </div>
+                                <!-- <div class="deudor-seccion-listo-con-encabezado" id="div_datos_empresariales_icono_pendiente" name="div_datos_empresariales_icono_pendiente" >
+                                    <img src="Resources/img/pending.svg" />
+                                </div>
+                                <div class="deudor-seccion-listo-con-encabezado" id="div_datos_empresariales_icono_completo" name="div_datos_empresariales_icono_completo">
+                                    <img src="Resources/img/complete.svg" />
+                                </div> -->
                             </div>
                             <div class="row">
                                 <div class="deudor-control deudor-control__valor-solicitado">
-                                    <label for="valor_solicitado">Valor solicitado</label>
+                                    <label for="valor_solicitado">Valor</label>
                                     <div class="input-icon">
                                         <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="valor_solicitado" name="valor_solicitado" oninput="validarValorSolicitado(this)" onchange="validarDivPersona()" onfocusout="mensajeValorSolicitado(this)" placeholder="Escribe..." value="<?php if (isset($_SESSION['valor_solicitado'])) { echo $_SESSION['valor_solicitado']; } ?>" required >
                                         <i>$</i>
@@ -147,7 +144,7 @@ class MainView
                                     </select>
                                 </div>
                                 <div class="deudor-control deudor-control__destino-credito">
-                                    <label for="destino_credito">Destino del crédito (Por favor describir el rubro del plan de inversión)</label>
+                                    <label for="destino_credito">Por favor describir el rubro del plan de inversión</label>
                                     <input type="text" class="form-control" id="destino_credito" name="destino_credito" onchange="validarDivPersona()" placeholder="Escribe..." value="<?php if (isset($_SESSION['destino_credito'])) { echo $_SESSION['destino_credito']; } ?>" required >
                                 </div>
                             </div>
@@ -170,7 +167,7 @@ class MainView
                         <div class="deudor-caja">
                             <div class="row">
                                 <div class="deudor-control" style="width: 330px;" >
-                                    <label for="nombre_empresa">Nombre de la empresa (verifique que sea el nombre como registra en certificado de Cámara de Comercio o de Registro único tributario (RUT))</label>
+                                    <label for="nombre_empresa">Nombre de la empresa (verifique que sea el nombre como registra en certificado de Cámara de Comercio o de Registro Único Tributario (RUT))</label>
                                     <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" onchange="validarDivDatosEmpresariales()" placeholder="Escribe..." value="<?php if (isset($_SESSION['nombre_empresa'])) { echo $_SESSION['nombre_empresa']; } ?>" required >
                                 </div>
                                 <div class="deudor-control" style="width: 200px;" >
@@ -197,21 +194,6 @@ class MainView
                                 <div class="deudor-control" style="width: 200px;">
                                     <label for="numero_contacto_empresa">Número de contacto</label>
                                     <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="numero_contacto_empresa" name="numero_contacto_empresa" maxlength="15" onchange="validarDivDatosEmpresariales()" placeholder="XXX XXX XXXX" value="<?php if (isset($_SESSION['numero_contacto_empresa'])) { echo $_SESSION['numero_contacto_empresa']; } ?>" required >
-                                </div>
-                                <div class="deudor-control" style="display: flex; flex-direction: column; width: 300px;" >
-                                    <label for="actividad_economica_empresa">Actividad económica principal</label>
-                                    <!-- <label for="actividad_economica_empresa">Actividad económica principal</label>
-                                    <select class="form-control js-example-basic-single" id="actividad_economica_empresa" name="actividad_economica_empresa" onchange="validarDivDatosEmpresariales()" required >
-                                        <option selected>-Escoge-</option>
-                                        <?php for ($i = 0; $i < sizeof($listado_actividades_economicas); $i++): ?>
-                                            <option value="<?= $listado_actividades_economicas[$i]['codigo']; ?>" <?php if (isset($_SESSION['actividad_economica_empresa'])): ?><?php if ($_SESSION['actividad_economica_empresa'] == $listado_actividades_economicas[$i]['codigo']): ?> selected <?php endif; ?><?php endif; ?> ><?= mb_convert_case($listado_actividades_economicas[$i]['nombre'], MB_CASE_TITLE, "UTF-8"); ?></option>
-                                        <?php endfor; ?>
-                                    </select> -->
-                                    <input type="text" class="form-control" id="actividad_economica_empresa" name="actividad_economica_empresa" onchange="validarDivDatosEmpresariales()" placeholder="Escribe..." value="" required="required">
-                                </div>
-                                <div class="deudor-control" style="width: 330px;">
-                                    <label for="redes_sociales_empresa">Redes sociales</label>
-                                    <input type="text" class="form-control" id="redes_sociales_empresa" name="redes_sociales_empresa" onchange="validarDivDatosEmpresariales()" placeholder="Opcional" value="<?php if (isset($_SESSION['redes_sociales_empresa'])) { echo $_SESSION['redes_sociales_empresa']; } ?>" >
                                 </div>
                                 <div class="deudor-control" style="width: 230px;">
                                     <label for="antiguedad_empresa">Antigüedad empresa</label>
@@ -243,8 +225,8 @@ class MainView
                             </div>
                         </div>
                         <div class="deudor-caja">
-                            <div class="row d-flex justify-content-center" style="padding-top: 25px; padding: 25px 30px 0 30px">
-                                <span>Adjunta los siguientes documentos:</span>
+                            <div class="row d-flex justify-content-center" style="padding-top: 25px; padding: 25px 30px 0 30px; margin-bottom: 30px;">
+                                <span>Adjunta los siguientes documentos (En formato de excel de preferencia):</span>
                             </div>
                             <div class="row d-flex" style="padding-top: 25px; justify-content: space-evenly;">
                                 <div style="display: flex; flex-direction: column; justify-content: space-between; max-width: 250px;">
@@ -264,74 +246,11 @@ class MainView
                                 </div>
                             </div>
                         </div>
-                        <div class="deudor-caja">
-                            <div class="row">
-                                <div class="deudor-control" style="width:33% !important">
-                                    <label for="informacion_financiera_ingresos">Ingresos</label>
-                                    <div class="input-icon">
-                                        <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="informacion_financiera_ingresos" name="informacion_financiera_ingresos" onchange="validarDivInformacionFinancieraPersonaJuridica()" placeholder="Digite una cifra..." value="<?php if (isset($_SESSION['informacion_financiera_ingresos'])) { echo $_SESSION['informacion_financiera_ingresos']; } ?>" required >
-                                        <i>$</i>
-                                    </div>
-                                </div>
-                                <div class="deudor-control" style="width:33% !important">
-                                    <label for="informacion_financiera_activos">Activos</label>
-                                    <div class="input-icon">
-                                        <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="informacion_financiera_activos" name="informacion_financiera_activos" onchange="validarDivInformacionFinancieraPersonaJuridica()" placeholder="Digite una cifra..." value="<?php if (isset($_SESSION['informacion_financiera_activos'])) { echo $_SESSION['informacion_financiera_activos']; } ?>" required >
-                                        <i>$</i>
-                                    </div>
-                                </div>
-                                <div class="deudor-control" style="width:33% !important">
-                                    <label for="informacion_financiera_por_cobrar">Cuentas por cobrar</label>
-                                    <div class="input-icon">
-                                        <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="informacion_financiera_por_cobrar" name="informacion_financiera_por_cobrar" onchange="validarDivInformacionFinancieraPersonaJuridica()" placeholder="Digite una cifra..." value="<?php if (isset($_SESSION['informacion_financiera_por_cobrar'])) { echo $_SESSION['informacion_financiera_por_cobrar']; } ?>" required >
-                                        <i>$</i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="deudor-control" style="width:33% !important">
-                                    <label for="informacion_financiera_egresos">Egresos</label>
-                                    <div class="input-icon">
-                                        <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="informacion_financiera_egresos" name="informacion_financiera_egresos" onchange="validarDivInformacionFinancieraPersonaJuridica()" placeholder="Digite una cifra..." value="<?php if (isset($_SESSION['informacion_financiera_egresos'])) { echo $_SESSION['informacion_financiera_egresos']; } ?>" required >
-                                        <i>$</i>
-                                    </div>
-                                </div>
-                                <div class="deudor-control" style="width:33% !important">
-                                    <label for="informacion_financiera_pasivos">Pasivos</label>
-                                    <div class="input-icon">
-                                        <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="informacion_financiera_pasivos" name="informacion_financiera_pasivos" onchange="validarDivInformacionFinancieraPersonaJuridica()" placeholder="Digite una cifra..." value="<?php if (isset($_SESSION['informacion_financiera_pasivos'])) { echo $_SESSION['informacion_financiera_pasivos']; } ?>" required >
-                                        <i>$</i>
-                                    </div>
-                                </div>
-                                <div class="deudor-control" style="width:33% !important">
-                                    <label for="informacion_financiera_por_pagar">Cuentas por pagar</label>
-                                    <div class="input-icon">
-                                        <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="informacion_financiera_por_pagar" name="informacion_financiera_por_pagar" onchange="validarDivInformacionFinancieraPersonaJuridica()" placeholder="Digite una cifra..." value="<?php if (isset($_SESSION['informacion_financiera_por_pagar'])) { echo $_SESSION['informacion_financiera_por_pagar']; } ?>" required >
-                                        <i>$</i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="deudor-control" style="width:33% !important">
-                                    <label for="informacion_financiera_patrimonio">Patrimonio</label>
-                                    <div class="input-icon">
-                                        <input type="text" inputmode="numeric" pattern="[0-9.]*" class="form-control" id="informacion_financiera_patrimonio" name="informacion_financiera_patrimonio" onchange="validarDivInformacionFinancieraPersonaJuridica()" placeholder="Digite una cifra..." value="<?php if (isset($_SESSION['informacion_financiera_patrimonio'])) { echo $_SESSION['informacion_financiera_patrimonio']; } ?>" required >
-                                        <i>$</i>
-                                    </div>
-                                </div>
-                                <div class="deudor-control" style="width:33% !important">
-                                    <label for="informacion_financiera_fecha">Fecha de la información</label>
-                                    <div class="input-icon">
-                                        <input type="date" onchange="validarDivInformacionFinancieraPersonaJuridica()" max="<?php echo date("Y-m-d"); ?>" class="form-control" id="informacion_financiera_fecha" name="informacion_financiera_fecha" placeholder="dd-mm-yyyy" value="<?php if (isset($_SESSION['informacion_financiera_fecha'])) { echo $_SESSION['informacion_financiera_fecha']; } ?>" required >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="deudor-contenedor" id="div_autorizaciones" name="div_autorizaciones" >
                         <div class="deudor-encabezado" style="height: 65px">
-                            <h4 class="deudor-encabezado__titulo" style="margin: 0" >TÉRMINOS Y CONDICIONES</h4>
+                            <h4 class="deudor-encabezado__titulo" style="margin: 0" >PROTECCIÓN DE DATOS</h4>
                             <div class="deudor-seccion-icono">
                                 <img src="Resources/img/icono-terminos-condiciones.svg" />
                             </div>
@@ -345,7 +264,7 @@ class MainView
                         <div class="deudor-caja" style="margin: 20px 0 0 0 !important" >
                             <div class="row" style="text-align: justify !important; padding: 0px 30px">
                                 <p style="word-break: break-word;">
-                                Por medio del presente escrito autorizo a Vanka SAS (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) o a quien represente sus derechos, para que adelante la consulta en relación al comportamiento financiero en las bases de datos propias o de centrales de riesgo (Datacrédito, Cifin, entre otras similares).
+                                Yo en mi calidad de titular de la información, por medio de la presente, manifiesto mi consentimiento previo, libre, expreso e informado para que Vanka S.A.S. (aliado de 5T SAS y Cámara de Comercio de Bucaramanga para el programa Creciendo con tu Negocio) o a quien represente sus derechos para tratar, consultar, solicitar, procesar, reportar y divulgar los datos personales por mi suministrados, conforme su Política de Tratamiento de Datos Personales y finalidades indicadas.
                                 </p>
                             </div>
                             <div class="row d-flex justify-content-center" style="padding-top: 4px">
@@ -382,6 +301,9 @@ class MainView
                             </div>
                             <div class="row d-flex justify-content-center" style="padding-top: 20px">
                                 <input id="consulta_centrales_de_riesgo" name="consulta_centrales_de_riesgo" type="hidden" value="">
+                                <div style="background-color: #000;">
+                                    <img src="Resources/img/check-listo.svg" alt="check">
+                                </div>
                                 <button id="btnSiCentralesRiesgo" name="btnSiCentralesRiesgo" class="boton-formulario" style="margin-bottom: 20px" type="button" onclick="validarBotonAutorizacionCentrales(this)">Acepto</button>
                                 <button id="btnNoCentralesRiesgo" name="btnNoCentralesRiesgo" class="boton-formulario" style="margin-bottom: 20px" type="button" onclick="validarBotonAutorizacionCentrales(this)">No acepto</button>
                             </div>
@@ -393,9 +315,9 @@ class MainView
                         <div style="display: flex; flex-direction: row; align-items: flex-start; justify-content: center; flex-wrap: wrap">
                             <button id="btnSiguiente" name="btnSiguiente" class="boton-siguiente" type="submit"
                             onclick="
-                            guardarDatosNuevoFormulario(event)
+                            verificarDatosFormulario(event)
                             "
-                            >Siguiente</button>
+                            >Enviar</button>
                         </div>
 
                     </div>
@@ -683,20 +605,79 @@ class MainView
 
         <!-- Encabezados fijos y ajuste de controles en forma inválida  -->
         <script>
-            function guardarDatosNuevoFormulario(event) {
+            function verificarDatosFormulario(event) {
                 event.preventDefault()
                 const dataForm = document.getElementById('mainForm')
                 const data = Object.fromEntries(
                     new FormData(dataForm)
                 )
-                console.log(data);
-                console.log(JSON.stringify(data));
-                
-            }
+                const keys = Object.keys(data)
+                let controlFormulario = 0
+                for (const elem of keys) {
+                    if(elem === 'ciudad_empresa') {
+                        if(data[elem] === '-Escoge-' || data[elem] === '' || data[elem] === ' ') {
+                            controlFormulario++
+                            alert('Por favor, agrege una ciudad válida.')
+                        }
+                    }else if(elem === 'migrante-retornado') {
+                        if(data[elem] === '-Escoge-' || data[elem] === '' || data[elem] === ' ') {
+                            controlFormulario++
+                            alert('El campo: ¿Alguno de los socios o accionistas de la empresa es migrante venezolano o colombiano retornado? se encuentra vacío.')
+                        }
+                    }else if(elem === 'adjuntar_balance_general') {
+                        if(data[elem].name === "") {
+                            controlFormulario++
+                            alert('Por favor, adjunte archivo de Balance general.')
+                        }
+                    }else if(elem === 'adjuntar_estado_de_resultado') {
+                        if(data[elem].name === "") {
+                            controlFormulario++
+                            alert('Por favor, adjunte archivo de Estado de resultado.')
+                        }
+                    }else if(elem === 'adjuntar_declaracion_renta') {
+                        if(data[elem].name === "") {
+                            controlFormulario++
+                            alert('Por favor, adjunte archivo de Declaración de renta.')
+                        }
+                    }else if(elem === 'terminos_condiciones') {
+                        if(data[elem] === "" || data[elem] === "no-acepto") {
+                            controlFormulario++
+                            alert('Por favor, acepte los términos y condiciones para realizar el registro.')
+                        }
+                    }else if(elem === 'consulta_centrales_de_riesgo') {
+                        if(data[elem] === "" || data[elem] === " ") {
+                            controlFormulario++
+                            alert('Por favor, llene el campo Consulta en centrales de riesgo.')
+                        }
+                    }else {
+                        if(data[elem] === "") {
+                            controlFormulario++
+                            alert('Por favor, llena todos los campos')
+                        }
+                    }
+                }
+                controlFormulario === 0 
+                    ? console.log(`Se puede enviar ${controlFormulario}`) 
+                    : console.log(`No se puede enviar ${controlFormulario}`);
 
-            window.addEventListener('load', () => {
-                document.getElementById('btnPersonaJuridica').click()
-            })
+                    // $.ajax({
+                    //     type: 'POST',
+                    //     url: 'guardar_datos_nuevo_formulario',
+                    //     // data:  $(mainForm).serialize(),
+                    //     data:  JSON.stringify(data),
+                    //     success: function (datas) {
+                    //         console.log('Data de regreso success')
+                    //         console.log(JSON.stringify(datas));                            
+                    //     },
+                    //     complete: function (datas) {
+                    //         // if (data.responseText != "success") {
+                    //         //     console.log("Error al registrar los datos");
+                    //         // }
+                    //         console.log('Data de regreso complete');
+                    //         console.log(JSON.stringify(datas));
+                    //     }
+                    // });
+            }
             var form = $('#mainForm');
             //var navbar = $('#div_datos_personales .deudor-encabezado')
 
@@ -1205,17 +1186,7 @@ class MainView
                     && $("#direccion_empresa").val().length > 0
                     && $("#ciudad_empresa").val().length > 0
                     && $("#numero_contacto_empresa").val().length > 0
-                    && $("#actividad_economica_empresa").val().length > 0
-                    && $("#antiguedad_empresa").val().length > 0
-                    && $("#primer_apellido_representante_legal").val().length > 0
-                    && $("#segundo_apellido_representante_legal").val().length > 0
-                    && $("#nombres_representante_legal").val().length > 0
-                    && $("#tipo_identificacion_representante_legal").val().length > 0
-                    && $("#numero_identificacion_representante_legal").val().length > 0
-                    && $("#correo_representante_legal").val().length > 0
-                    && $("#ciudad_representante_legal").val().length > 0
-                    && $("#direccion_representante_legal").val().length > 0
-                    && $("#celular_representante_legal").val().length > 0)
+                    && $("#antiguedad_empresa").val().length > 0)
                 {
                     $("#div_datos_empresariales_icono_pendiente").hide();
                     $("#div_datos_empresariales_icono_completo").show();
@@ -1339,17 +1310,8 @@ class MainView
                     $("#direccion_empresa").attr("required", true);
                     $("#ciudad_empresa").attr("required", true);
                     $("#numero_contacto_empresa").attr("required", true);
-                    $("#actividad_economica_empresa").attr("required", true);
+                    // $("#actividad_economica_empresa").attr("required", true);
                     $("#antiguedad_empresa").attr("required", true);
-                    $("#primer_apellido_representante_legal").attr("required", true);
-                    $("#segundo_apellido_representante_legal").attr("required", true);
-                    $("#nombres_representante_legal").attr("required", true);
-                    $("#tipo_identificacion_representante_legal").attr("required", true);
-                    $("#numero_identificacion_representante_legal").attr("required", true);
-                    $("#correo_representante_legal").attr("required", true);
-                    $("#ciudad_representante_legal").attr("required", true);
-                    $("#direccion_representante_legal").attr("required", true);
-                    $("#celular_representante_legal").attr("required", true);
 
                     $("#div_informacion_financiera_persona_juridica").show();
                     $("#div_informacion_financiera_persona_juridica *").attr("required", true);
@@ -2369,18 +2331,22 @@ class MainView
                     htmlIndependientes += $(this).prop('outerHTML');
                 });
 
-                $.ajax({
-                    type: 'POST',
-                    url: 'guardar_sesion_deudor',
-                    data:  $(mainForm).serialize(),
-                    success: function (data) {
-                    },
-                    complete: function (data) {
-                        if (data.responseText != "success") {
-                            console.log("Error al registrar los datos");
-                        }
-                    }
-                });
+                // $.ajax({
+                //     type: 'POST',
+                //     url: 'guardar_sesion_deudor',
+                //     data:  $(mainForm).serialize(),
+                //     success: function (data) {
+                //         console.log('Data de regreso success');
+                //         console.log(data);
+                //     },
+                //     complete: function (data) {
+                //         // if (data.responseText != "success") {
+                //         //     console.log("Error al registrar los datos");
+                //         // }
+                //         console.log('Data de regreso complete');
+                //         console.log(data);
+                //     }
+                // });
 
                 setTimeout(registrarSesionDeudor, interval);
             }
