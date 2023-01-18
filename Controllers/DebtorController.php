@@ -40,6 +40,12 @@ class DebtorController
         $listado_actividades_economicas = $this->db->getEconomicActivities();
 		new MainView($listado_ciudades, $listado_actividades_economicas);
 	}
+
+	public function guardarDatosNuevoFormulario() {
+		// echo "Hola mundoo";
+		// echo $_POST;
+		// return $_POST;
+	}
 	
 	public function registrarDatos() {
 		$debtor = new Debtor();

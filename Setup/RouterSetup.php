@@ -24,15 +24,8 @@ class RouterSetup implements RouterSetupInterface
         $router->on404()->view('404');
 
         $router->all('')->controller(\Controllers\DebtorController::class, 'abrirFormularioDeudor');
-		
-		/*$router->all('test')->run(function ()
-        {
-            new \Views\TestMainView();
-        });*/
-		
-		$router->all('connect_to_api')->controller(\Controllers\APIController::class, 'setAPI');
 
-        $router->all('register_to_api')->controller(\Controllers\DebtorController::class, 'registrarAPIMundosoft');
+		$router->all('guardar_datos_nuevo_formulario')->controller(\Controllers\DebtorController::class, 'guardarDatosNuevoFormulario');
 		
 		$router->all('registrar_datos_deudor')->controller(\Controllers\DebtorController::class, 'registrarDatos');
 		
